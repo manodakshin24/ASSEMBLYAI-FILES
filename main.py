@@ -19,7 +19,7 @@ if fileObject:
         progress_bar.progress(percent_complete/10)
         result = get_text(token,t_id)
 
-    sleep_duration = 50
+    sleep_duration = 10
 
     for percent in range(percent_complete,101):
         time.sleep(sleep_duration)
