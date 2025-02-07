@@ -4,7 +4,7 @@ import time
 
 st.header("Transcribe Audio")
 
-fileObject = st.file_uploader(label = "Please upload your file" )
+fileObject = st.file_uploader(label = "Please upload your file: " )
 if fileObject:
     token, t_id = upload_file(fileObject)
     result = {}
@@ -12,14 +12,14 @@ if fileObject:
     sleep_duration = 1
     percent_complete = 0
     progress_bar = st.progress(percent_complete)
-    st.text("Currently in queue")
+    st.text("The videotranscription process is currently in queue XXXX.")
     while result.get("status") != "processing":
         percent_complete += sleep_duration
         time.sleep(sleep_duration)
         progress_bar.progress(percent_complete/10)
         result = get_text(token,t_id)
 
-    sleep_duration = 0.01
+    sleep_duration = 10
 
     for percent in range(percent_complete,101):
         time.sleep(sleep_duration)
